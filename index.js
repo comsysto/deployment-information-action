@@ -5,6 +5,7 @@ const wait = require('./wait');
 // most @actions toolkit packages have async methods
 async function run() {
   try { 
+    const cfManifestPath = core.getInput('cfManifestPath');
     const ms = core.getInput('milliseconds');
     console.log(`Waiting ${ms} milliseconds ...`)
 

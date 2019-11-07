@@ -59,7 +59,6 @@ const fs = __webpack_require__(747);
 // most @actions toolkit packages have async methods
 async function run() {
     try {
-        //console.log(process.env);
         const archivePath = core.getInput( 'archive-path' );
         console.log( `Reading from ${ archivePath } ...` );
 
@@ -67,17 +66,17 @@ async function run() {
             if (err) {
                 throw err;
             }
-            return JSON.parse( data );
+
+            let deploymentInfo = JSON.parse( data );
+            core.setOutput( 'artifact-path', deploymentInfo.artifactPath );
+            core.setOutput( 'cf-manifest-path', deploymentInfo.manifestPath );
         } );
     } catch (error) {
         core.setFailed( error.message );
     }
 }
 
-run().then( deploymentInfo => {
-    core.setOutput( 'cf-manifest-path', deploymentInfo.manifestPath );
-    core.setOutput( 'artifact-path', deploymentInfo.artifactPath );
-} );
+run();
 
 
 /***/ }),

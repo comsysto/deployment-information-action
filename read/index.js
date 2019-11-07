@@ -1,10 +1,13 @@
 const core = require( '@actions/core' );
+const fs = require('fs');
 
 // most @actions toolkit packages have async methods
 async function run() {
     try {
+        //console.log(process.env);
         const archivePath = core.getInput( 'archive-path' );
         console.log( `Reading from ${ archivePath } ...` );
+
         fs.readFile( `${ archivePath }/deploymentInfo.json`, 'utf8', (err, data) => {
             if (err) {
                 throw err;

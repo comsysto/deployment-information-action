@@ -1,5 +1,5 @@
 {
-  "name": "javascript-action",
+  "name": "deployment-information-action-read",
   "version": "1.0.0",
   "description": "JavaScript Action Template",
   "main": "index.js",
@@ -10,21 +10,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/javascript-action.git"
+    "url": "git+https://github.com/comsysto/deployment-information-action.git"
   },
   "keywords": [
+    "Comsysto Reply",
     "GitHub",
     "Actions",
     "JavaScript"
   ],
-  "author": "GitHub",
+  "author": "Comsysto Reply",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/actions/javascript-action/issues"
+    "url": "https://github.com/comsysto/deployment-information-action/issues"
   },
-  "homepage": "https://github.com/actions/javascript-action#readme",
+  "homepage": "https://github.com/comsysto/deployment-information-action/read#readme",
   "dependencies": {
-    "@actions/core": "^1.1.1"
+    "@actions/core": "^1.1.1",
+    "@actions/io": "^1.0.1"
   },
   "devDependencies": {
     "@zeit/ncc": "^0.20.5",

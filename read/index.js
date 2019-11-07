@@ -1,20 +1,22 @@
-const core = require('@actions/core');
-
+const core = require( '@actions/core' );
 
 // most @actions toolkit packages have async methods
 async function run() {
-  try { 
-    const archivePath = core.getInput('archive-path');
-    console.log(`Reading from ${archivePath} ...`)
-
-
-    JSON.parse()
-    core.setOutput('cf-manifest-path', "fghfhg");
-    core.setOutput('artifact-path', "sdfgsdfs");
-  }
-  catch (error) {
-    core.setFailed(error.message);
-  }
+    try {
+        const archivePath = core.getInput( 'archive-path' );
+        console.log( `Reading from ${ archivePath } ...` );
+        fs.readFile( `${ archivePath }/deploymentInfo.json`, 'utf8', (err, data) => {
+            if (err) {
+                throw err;
+            }
+            return JSON.parse( data );
+        } );
+    } catch (error) {
+        core.setFailed( error.message );
+    }
 }
 
-run()
+run().then( deploymentInfo => {
+    core.setOutput( 'cf-manifest-path', deploymentInfo.manifestPath );
+    core.setOutput( 'artifact-path', deploymentInfo.artifactPath );
+} );

@@ -1,4 +1,1 @@
-{
-  "archivePath": "./test-1.jar",
-  "manifestPath": "./manifest.yaml"
-}
+{"artifactPath":"./test/test-1.jar","manifestPath":"./test/manifest.yaml"}

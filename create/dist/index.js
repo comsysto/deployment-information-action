@@ -649,8 +649,32 @@ async function run() {
 
         // Retrieve artifact information via gradle
         core.info('Retrieve artifact information from gradle...');
-        let archivesBaseName = exec.exec("./gradlew properties -q | grep '^archivesBaseName:' | awk '{print $2}'");
-        let version = exec.exec("./gradlew properties  -q | grep '^version:' | awk '{print $2}'");
+        let output = '';
+        let error = '';
+        const options = {};
+        options.listeners = {
+            stdout: (data) => {
+                output += data.toString();
+            },
+            stderr: (data) => {
+                error += data.toString();
+            }
+        };
+        await exec.exec(
+            "./gradlew properties -q | grep '^archivesBaseName:' | awk '{print $2}'",
+            undefined,
+            options);
+        core.debug(error)
+        let archivesBaseName = output;
+
+        output = '';
+        error = '';
+        await exec.exec(
+            "./gradlew properties  -q | grep '^version:' | awk '{print $2}'",
+            undefined,
+            options);
+        core.debug(error)
+        let version = output;
 
         // Create file content
         let fileContent = {};

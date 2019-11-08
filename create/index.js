@@ -41,8 +41,6 @@ async function run() {
         let archiveName = core.getInput('archive-name');
         let targetPath = core.getInput('target-path');
         let targetFilename = core.getInput('target-filename');
-        core.info(artifactBaseName)
-        core.info(artifactVersion)
 
         checkingRequiredParameters(artifactBaseName, artifactVersion);
 

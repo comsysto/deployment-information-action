@@ -1,15 +1,18 @@
 name: 'Create deployment information'
 description: 'Creates the deploymentInfo.json file'
 inputs:
-  archive-path:
-    description: 'the directory where the json file is located'
+  archive-name:
+    description: 'The archive name'
     required: true
     default: './'
-outputs:
-  cf-manifest-path:
-    description: 'The path to the manifest file required to deploy to cloudfoundry'
-  artifact-path:
-    description: 'The path to the archive to deploy'
+  target-path:
+    description: 'The directory where the json file is created'
+    required: true
+    default: './build/libs'
+  target-filename:
+    description: 'The filename of the created json file'
+    required: true
+    default: 'deploymentInfo.json'
 runs:
   using: 'node12'
   main: 'dist/index.js'

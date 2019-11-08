@@ -4,12 +4,12 @@ inputs:
   artifact-base-name:
     description: 'The artifact base name without version'
     required: true
-  artifact-file-extension:
-    description: 'The artifact file extension'
-    default: 'jar'
   artifact-version:
     description: 'The artifact version'
     required: true
+  artifact-file-extension:
+    description: 'The artifact file extension'
+    default: 'jar'
   archive-name:
     description: 'The archive name'
     required: true

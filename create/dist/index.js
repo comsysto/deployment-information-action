@@ -91,8 +91,8 @@ function createFileContentJson(archiveName, artifactBaseName, artifactFileExtens
 async function run() {
     try {
         let artifactBaseName = core.getInput('artifact-base-name');
-        let artifactFileExtension = core.getInput('artifact-file-extension');
         let artifactVersion = core.getInput('artifact-version');
+        let artifactFileExtension = core.getInput('artifact-file-extension');
         let archiveName = core.getInput('archive-name');
         let targetPath = core.getInput('target-path');
         let targetFilename = core.getInput('target-filename');
@@ -105,6 +105,7 @@ async function run() {
         core.info('Using following input information:');
         core.info(`Artifact base name: ${artifactBaseName}`);
         core.info(`Artifact version: ${artifactVersion}`);
+        core.info(`Artifact file extension: ${artifactFileExtension}`);
         core.info(`Archive name: ${archiveName}`);
         core.info(`Target path: ${targetPath}`);
         core.info(`Target filename: ${targetFilename}`);

@@ -13,7 +13,7 @@ inputs:
   archive-name:
     description: 'The archive name'
     required: true
-    default: './'
+    default: ''
   target-path:
     description: 'The directory where the json file is created'
     required: true

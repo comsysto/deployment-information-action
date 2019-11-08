@@ -53,7 +53,7 @@ module.exports = require("os");
 /***/ 104:
 /***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
-const core = __webpack_require__( 470 );
+const core = __webpack_require__(470);
 const fs = __webpack_require__(747);
 const process = __webpack_require__(765);
 
@@ -99,7 +99,6 @@ async function run() {
 
         checkingRequiredParameters(artifactBaseName, artifactVersion);
 
-        core.info(`Creating ${targetFilename}...`);
         core.info('Using following input information:');
         core.info(`Artifact base name: ${artifactBaseName}`);
         core.info(`Artifact version: ${artifactVersion}`);
@@ -108,6 +107,7 @@ async function run() {
         core.info(`Target path: ${targetPath}`);
         core.info(`Target filename: ${targetFilename}`);
 
+        core.info(`Creating ${targetFilename}...`);
         // Create file content
         let fileContentJson = createFileContentJson(archiveName, artifactBaseName, artifactFileExtension, artifactVersion, targetPath);
 
@@ -118,7 +118,7 @@ async function run() {
             }
         });
     } catch (error) {
-        core.setFailed( error.message );
+        core.setFailed(error.message);
     }
 }
 

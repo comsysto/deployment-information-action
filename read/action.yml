@@ -1,15 +1,18 @@
 name: 'Read deployment information'
 description: 'Reads and parses the deploymentInfo.json file'
 inputs:
+  source-filename:
+    description: 'The filename of the json file'
+    default: 'deploymentInfo.json'
   archive-path:
     description: 'the directory where the json file is located'
     required: true
-    default: './'
+    default: ''
 outputs:
   cf-manifest-path:
     description: 'The path to the manifest file required to deploy to cloudfoundry'
   artifact-path:
-    description: 'The path to the archive to deploy'
+    description: 'The path to the artifact to deploy'
 runs:
   using: 'node12'
   main: 'dist/index.js'

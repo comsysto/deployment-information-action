@@ -1,4 +1,4 @@
-const core = require( '@actions/core' );
+const core = require('@actions/core');
 const fs = require('fs');
 const process = require('process');
 
@@ -44,7 +44,6 @@ async function run() {
 
         checkingRequiredParameters(artifactBaseName, artifactVersion);
 
-        core.info(`Creating ${targetFilename}...`);
         core.info('Using following input information:');
         core.info(`Artifact base name: ${artifactBaseName}`);
         core.info(`Artifact version: ${artifactVersion}`);
@@ -53,6 +52,7 @@ async function run() {
         core.info(`Target path: ${targetPath}`);
         core.info(`Target filename: ${targetFilename}`);
 
+        core.info(`Creating ${targetFilename}...`);
         // Create file content
         let fileContentJson = createFileContentJson(archiveName, artifactBaseName, artifactFileExtension, artifactVersion, targetPath);
 
@@ -63,7 +63,7 @@ async function run() {
             }
         });
     } catch (error) {
-        core.setFailed( error.message );
+        core.setFailed(error.message);
     }
 }
 

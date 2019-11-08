@@ -53,26 +53,31 @@ module.exports = require("os");
 /***/ 104:
 /***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
-const core = __webpack_require__( 470 );
+const core = __webpack_require__(470);
 const fs = __webpack_require__(747);
 
 // most @actions toolkit packages have async methods
 async function run() {
     try {
-        const archivePath = core.getInput( 'archive-path' );
-        console.log( `Reading from ${ archivePath } ...` );
+        const sourceFilename = core.getInput('source-filename');
+        const archivePath = core.getInput('archive-path');
 
-        fs.readFile( `${ archivePath }/deploymentInfo.json`, 'utf8', (err, data) => {
+        core.info('Using following input information:');
+        core.info(`Source filename: ${sourceFilename}`);
+        core.info(`Archive path: ${archivePath}`);
+
+        console.log(`Reading from ${archivePath} ...`);
+        fs.readFile(`${archivePath}/${sourceFilename}`, 'utf8', (err, data) => {
             if (err) {
                 throw err;
             }
 
-            let deploymentInfo = JSON.parse( data );
-            core.setOutput( 'artifact-path', deploymentInfo.artifactPath );
-            core.setOutput( 'cf-manifest-path', deploymentInfo.manifestPath );
-        } );
+            let deploymentInfo = JSON.parse(data);
+            core.setOutput('artifact-path', deploymentInfo.artifactPath);
+            core.setOutput('cf-manifest-path', deploymentInfo.manifestPath);
+        });
     } catch (error) {
-        core.setFailed( error.message );
+        core.setFailed(error.message);
     }
 }
 

@@ -1,5 +1,5 @@
 {
-  "name": "deployment-information-action-read",
+  "name": "deployment-information-action-create",
   "version": "1.0.0",
   "description": "JavaScript Action Template",
   "main": "index.js",
@@ -23,9 +23,10 @@
   "bugs": {
     "url": "https://github.com/comsysto/deployment-information-action/issues"
   },
-  "homepage": "https://github.com/comsysto/deployment-information-action/read#readme",
+  "homepage": "https://github.com/comsysto/deployment-information-action/create#readme",
   "dependencies": {
-    "@actions/core": "^1.1.3"
+    "@actions/core": "^1.1.3",
+    "@actions/exec": "^1.0.1"
   },
   "devDependencies": {
     "@zeit/ncc": "^0.20.5",

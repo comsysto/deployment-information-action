@@ -25,7 +25,7 @@ async function run() {
             }
         };
         await exec.exec(
-            './gradlew properties -q '|' grep \'^archivesBaseName:\' '|' awk \'{print $2}\'',
+            './gradlew properties -q \'|\' grep \'^archivesBaseName:\' \'|\' awk \'{print $2}\'',
             undefined,
             options);
         core.debug(error)

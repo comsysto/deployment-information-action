@@ -5,11 +5,11 @@ This actions creates a JSON file containing all information to deploy an artifac
 ## Input parameters
 
 `source-file`  
-Default: `deploymentInfo.json`   
+**Default:** `deploymentInfo.json`   
 Specifies the filename of the json file.
 
 `archive-path`  
-Default: Empty string   
+**Default:** Empty string   
 Specifies the directory where the deployment information json file is located. Trailing slash (`/`) is not supported.        
 
 See also [action.yml](action.yml).

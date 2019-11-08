@@ -11,19 +11,19 @@ Specifies the artifact base name without version. This parameter must not be emp
 Specifies the artifact version. This parameter must not be empty.     
 
 `artifact-file-extension`  
-Default: `jar`   
+**Default:** `jar`   
 Specifies the artifact file extension.     
 
 `archive-name`  
-Default: Empty string   
+**Default:** Empty string   
 Specifies the archive name.    
 
 `target-path`   
-Default: `./build/libs`     
+**Default:** `./build/libs`     
 Specifies the directory where the json file is created. Trailing slash (`/`) is not supported.
 
 `target-filename`   
-Default: `deploymentInfo.json`  
+**Default:** `deploymentInfo.json`  
 Specifies the filename of the created json file.    
 
 See also [action.yml](action.yml).

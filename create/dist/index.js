@@ -661,7 +661,7 @@ async function run() {
             }
         };
         await exec.exec(
-            "./gradlew properties -q | grep '^archivesBaseName:' | awk '{print $2}'",
+            './gradlew properties -q | grep \'^archivesBaseName:\' | awk \'{print $2}\'',
             undefined,
             options);
         core.debug(error)
@@ -670,7 +670,7 @@ async function run() {
         output = '';
         error = '';
         await exec.exec(
-            "./gradlew properties  -q | grep '^version:' | awk '{print $2}'",
+            './gradlew properties  -q | grep \'^version:\' | awk \'{print $2}\'',
             undefined,
             options);
         core.debug(error)

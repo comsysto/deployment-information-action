@@ -641,24 +641,33 @@ const fs = __webpack_require__(747);
 // most @actions toolkit packages have async methods
 async function run() {
     try {
-        core.info('Creating deploymentInfo.json...');
+        let archiveName = core.getInput('archive-name');
+        let targetPath = core.getInput('target-path');
+        let targetFilename = core.getInput('target-filename');
+
+        core.info(`Creating ${targetFilename}...`);
 
         // Retrieve artifact information via gradle
         core.info('Retrieve artifact information from gradle...');
         let archivesBaseName = exec.exec("./gradlew properties -q | grep '^archivesBaseName:' | awk '{print $2}'");
         let version = exec.exec("./gradlew properties  -q | grep '^version:' | awk '{print $2}'");
 
-        // Create deployment information json
-        let deploymentInformation = new Map();
-        deploymentInformation.set('artifactPath', `deploymentArchive/${archivesBaseName}-${version}.jar`);
-        deploymentInformation.set('manifestPath', "deploymentArchive/manifest.yaml");
+        // Create file content
+        let fileContent = {};
+        fileContent.artifactPath = `${archiveName}/${archivesBaseName}-${version}.jar`;
+        fileContent.manifestPath = `${archiveName}/manifest.yaml`;
 
-        let deploymentInformationJson = JSON.stringify(deploymentInformation);
-        core.debug(deploymentInformationJson);
+        let fileContentJson = JSON.stringify(fileContent, undefined, 2);
+        core.debug(fileContentJson);
+
+        core.info('Create json file in target path...');
+        // Create directory
+        fs.mkdir(targetPath, { recursive: true }, (err) => {
+            if (err) throw err;
+        });
 
         // Create deployment information json file
-        core.info('Create deployment json file');
-        fs.writeFile('deploymentInfo.json', deploymentInformationJson, (err) => {
+        fs.writeFile(`${targetPath}/${targetFilename}`, fileContentJson, (err) => {
             if (err) {
                 throw err;
             }

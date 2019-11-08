@@ -15,9 +15,9 @@ function checkingRequiredParameters(artifactBaseName, artifactVersion) {
     }
 }
 
-function createFileContentJson(archiveName, artifactBaseName, artifactVersion, targetPath) {
+function createFileContentJson(archiveName, artifactBaseName, artifactFileExtension, artifactVersion, targetPath) {
     let fileContent = {};
-    fileContent.artifactPath = `${archiveName}/${artifactBaseName}-${artifactVersion}.jar`;
+    fileContent.artifactPath = `${archiveName}/${artifactBaseName}-${artifactVersion}.${artifactFileExtension}`;
     fileContent.manifestPath = `${archiveName}/manifest.yaml`;
 
     let fileContentJson = JSON.stringify(fileContent, undefined, 2);
@@ -36,6 +36,7 @@ function createFileContentJson(archiveName, artifactBaseName, artifactVersion, t
 async function run() {
     try {
         let artifactBaseName = core.getInput('artifact-base-name');
+        let artifactFileExtension = core.getInput('artifact-file-extension');
         let artifactVersion = core.getInput('artifact-version');
         let archiveName = core.getInput('archive-name');
         let targetPath = core.getInput('target-path');
@@ -54,7 +55,7 @@ async function run() {
         core.info(`Target filename: ${targetFilename}`);
 
         // Create file content
-        let fileContentJson = createFileContentJson(archiveName, artifactBaseName, artifactVersion, targetPath);
+        let fileContentJson = createFileContentJson(archiveName, artifactBaseName, artifactFileExtension, artifactVersion, targetPath);
 
         // Create deployment information json file
         fs.writeFile(`${targetPath}/${targetFilename}`, fileContentJson, (err) => {
